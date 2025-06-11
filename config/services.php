@@ -41,7 +41,11 @@ return [
     ],
 
     'python_service' => [
-        'base_url' => env('PYTHON_SERVICE_BASE_URL'), // e.g., http://localhost:8001 or http://127.0.0.1:8001
+        'url' => env('PYTHON_SERVICE_URL', 'http://localhost:5001/file/store'),
+    ],
+
+    'document_access' => [
+        'secret' => env('DOCUMENT_ACCESS_KEY'),
     ],
 
 ];

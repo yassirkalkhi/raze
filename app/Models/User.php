@@ -51,4 +51,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Chat::class);
     }
+
+    /**
+     * Get the documents for the user.
+     */
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

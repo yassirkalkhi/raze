@@ -35,17 +35,17 @@ const markdownComponents = {
         const { inline, className, children, ...rest } = props
         const match = /language-(\w+)/.exec(className || "")
         if (inline) {
-            return <code className="bg-gray-200 dark:bg-[#2E3440] rounded text-[0.7rem] px-1 py-0.5">{children}</code>
+            return <code className="bg-[#2e3440] dark:bg-[#2E3440] rounded text-[0.7rem] px-1 py-0.5">{children}</code>
         }
         return match ? (
-            <div className="rounded-md border my-4 bg-gray-900/50 dark:bg-gray-800/50">
-                <div className="flex items-center justify-between w-full px-4 py-1 border-b border-gray-300 dark:border-white/10">
-                    <span className="text-xs font-semibold text-gray-500 dark:text-gray-300 capitalize">{match[1]}</span>
-                    <button onClick={() => navigator.clipboard.writeText(String(children))} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+            <div className="rounded-md border my-4 bg-[#2e3440] dark:bg-gray-800/50">
+                <div className="flex items-center justify-between w-full px-4 py-1 border-b border-gray-600 dark:border-white/10">
+                    <span className="text-xs font-semibold text-gray-200 dark:text-gray-300 capitalize">{match[1]}</span>
+                    <button onClick={() => navigator.clipboard.writeText(String(children))} className="text-gray-200 hover:text-gray-300 dark:text-gray-400 dark:hover:text-gray-200">
                         <Copy size={13} />
                     </button>
                 </div>
-                <SyntaxHighlighter style={nord} language={match[1]} PreTag="div" className="!bg-transparent text-[0.8rem] w-full" {...rest}>
+                <SyntaxHighlighter style={nord} language={match[1]} PreTag="div" className="dark:!bg-transparent text-[0.8rem] w-full" {...rest}>
                     {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
             </div>
@@ -122,7 +122,7 @@ export const Message = ({ content, className, role = "assistant", isStreaming = 
                             !isStreaming &&
                             thoughtContent.trim() && (
                                 <>
-                                    <button className="flex ms-1 gap-2 mb-4 text-sm bg-primary-foreground text-gray-500 dark:text-gray-300 -mx-3" onClick={() => setShowThoughts(!showThoughts)}>
+                                    <button className="flex ms-1 gap-2 mb-4 text-sm  text-gray-500 dark:text-gray-300 -mx-3" onClick={() => setShowThoughts(!showThoughts)}>
                                         <span>reasonings</span>
                                         {showThoughts ? <ChevronUp className="mt-1" size={16} /> : <ChevronDown className="mt-1" size={16} />}
                                     </button>

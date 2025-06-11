@@ -1,9 +1,10 @@
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
-import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { router, useForm, usePage } from '@inertiajs/react';
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
+import { Link, router, useForm, usePage } from '@inertiajs/react';
 import { Button } from './ui/button';
 import { useState } from 'react';
+import { FileUp } from 'lucide-react';
 
 
 
@@ -46,6 +47,12 @@ export function AppSidebar() {
             <SidebarContent>
                 <NavMain chats={chats || []} />
             </SidebarContent>
+            <SidebarFooter>
+            <Link href={route('rag.create')} className="flex items-center gap-x-2.5 px-6 py-3 text-sm font-medium text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100">
+                <FileUp className="h-5 w-5" />
+                <span>Upload RAG</span>
+            </Link>
+            </SidebarFooter>
         </Sidebar>
     );
 }
