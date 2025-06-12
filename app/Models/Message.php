@@ -23,8 +23,5 @@ class Message extends Model
         return $this->belongsTo(Chat::class);
     }
     
-    public function attachments(): HasMany
-    {
-        return $this->hasMany(Attachment::class);
-    }
+  
 }

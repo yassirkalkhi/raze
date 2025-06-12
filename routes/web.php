@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/messages/{chat}', [MessageController::class, 'index'])->name('messages.index');
     Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
 
-    Route::get('/rag-upload', [RagUploadController::class, 'create'])->name('rag.create');
+    Route::get('/docs', [RagUploadController::class, 'create'])->name('rag.create');
     Route::post('/rag-upload', [RagUploadController::class, 'store'])->name('rag.store');
     Route::delete('/rag-upload', [RagUploadController::class, 'destroy'])->name('rag.destroy');
 
@@ -38,9 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
-Route::fallback(function () {
-    return Inertia::render('404');
-});
+
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

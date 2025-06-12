@@ -9,13 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class DocumentAccessController extends Controller
 {
-    /**
-     * Display the specified resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string $uuid
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse|\Illuminate\Http\Response
-     */
+ 
     public function show(Request $request, string $uuid)
     {
         $document = Document::findOrFail($uuid);

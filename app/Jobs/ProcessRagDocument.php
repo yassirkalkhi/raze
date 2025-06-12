@@ -16,38 +16,21 @@ class ProcessRagDocument implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * The number of times the job may be attempted.
-     *
-     * @var int
-     */
+ 
     public $tries = 3;
 
-    /**
-     * The number of seconds to wait before retrying the job.
-     *
-     * @var int
-     */
+
     public $backoff = 60;
 
-    /**
-     * The document instance.
-     *
-     * @var \App\Models\Document
-     */
     public $document;
 
-    /**
-     * Create a new job instance.
-     */
+   
     public function __construct(Document $document)
     {
         $this->document = $document;
     }
 
-    /**
-     * Execute the job.
-     */
+    
     public function handle(): void
     {
         try {
@@ -55,8 +38,7 @@ class ProcessRagDocument implements ShouldQueue
             if (!$fileContents) {
                 throw new \Exception("File not found at path: {$this->document->path}");
             }
-            $endpoint = config('services.python_service.url');
-
+           
             $response = Http::asMultipart()
                 ->timeout(30000) 
                 ->attach(
@@ -64,9 +46,9 @@ class ProcessRagDocument implements ShouldQueue
                     $fileContents,
                     $this->document->name
                 )
-                ->post($endpoint, [
+                ->post('http://localhost:5002/file/store', [
                     'uid' => (string) $this->document->user_id,
-                    'source' => $this->document->path,
+                    'source' => $this->document->name,
                 ]);
 
             if ($response->successful()) {

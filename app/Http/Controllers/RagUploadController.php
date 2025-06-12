@@ -72,9 +72,6 @@ class RagUploadController extends Controller
         return redirect()->route('rag.create')->with('success', 'File is being processed.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request)
     {
         $request->validate([
@@ -86,7 +83,7 @@ class RagUploadController extends Controller
 
         $document = $user->documents()->where('path', $path)->firstOrFail();
 
-        // Security Check: Ensure the path is within the user's directory and prevent traversal
+       
         if (strpos($document->path, 'rag_files/' . $user->id) !== 0) {
             Log::warning('Attempted to delete a file outside the authorized directory.', [
                 'user_id' => $user->id,

@@ -93,7 +93,7 @@ export const Message = ({ content, className, role = "assistant", isStreaming = 
 
     const ThinkingIndicator = () => (
         <div className="flex items-center ps-2">
-            <div className="bg-white rounded-full w-3 h-3 animate-pulse"></div>
+            <div className="bg-primary dark:bg-white rounded-full w-3 h-3 mt-3 animate-pulse"></div>
         </div>
     )
 
@@ -130,7 +130,7 @@ export const Message = ({ content, className, role = "assistant", isStreaming = 
                                         "transition-all duration-300 ease-in-out overflow-hidden",
                                         showThoughts ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                                     )}>
-                                        <div className="mt-2 mb-4 p-3 leading-5 border rounded-md text-xs text-gray-500">
+                                        <div className="h-[200px] mt-2 mb-4 p-3 leading-5 border rounded-md text-xs text-gray-500 overflow-y-scroll">
                                             <ReactMarkdown components={markdownComponents}>{thoughtContent}</ReactMarkdown>
                                         </div>
                                     </div>

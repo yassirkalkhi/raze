@@ -41,7 +41,10 @@ return [
     ],
 
     'python_service' => [
-        'url' => env('PYTHON_SERVICE_URL', 'http://localhost:5001/file/store'),
+        'url' => env('PYTHON_SERVICE_URL', 'http://localhost:5002'),
+        'upload' => env('PYTHON_SERVICE_URL_UPLOAD'),
+        'query' => env('PYTHON_SERVICE_URL_QUERY'),
+
     ],
 
     'document_access' => [
